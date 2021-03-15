@@ -6,6 +6,10 @@ body {
 background: #E9E9E9;
 }
 
+a{
+    color: black;
+}
+
 .logo{
 width: 120px;
 }

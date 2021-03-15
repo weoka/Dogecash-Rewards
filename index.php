@@ -16,7 +16,9 @@ $handler = start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dogecash rewards</title>
+    <title>DogeCash Rewards Calculator</title>
+    <meta name="description" content="Compare staking and masternode earnings from Dogecash possible passive incomes.">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -24,7 +26,7 @@ $handler = start();
 <body>
 
 <div class="container">
-    <img class="logo" src="https://chain.dogec.io/public/img/grafana_icon.svg" alt="Dogecash logo">
+    <a href="https://dogecash.org/"><img class="logo" src="/images/logo.svg" alt="Dogecash logo"></a>
 </div>
 
 <div class="container">
@@ -156,6 +158,14 @@ $handler = start();
             </h3>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <h4>Not official Dogecash rewards calculator</h4>
+</div>
+
+<div class="container">
+    <h4><a href="https://github.com/weoka/Dogecash-Rewards" target="_blank">Github Repository</a></h4>
 </div>
 
 <script src="/scripts/main.js"></script>
