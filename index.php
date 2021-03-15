@@ -38,17 +38,17 @@
         <div>
             <h3>
                 DOGEC not staking<br>
-                <div class="slider">
-                    <input id="slider" min="0" max="100" type="range" value="30" style="background: linear-gradient(to right, #A76D4A 0%, #A76D4A 30%, #D8D8D8 30%, #D8D8D8 100%);"/> <span id="percentage">30%</span>
+                <div id="slider">
+                    <input min="0" max="99" type="range" value="30" style="background: linear-gradient(to right, #A76D4A 0%, #A76D4A 30%, #D8D8D8 30%, #D8D8D8 100%);"/> <span>30%</span>
                 </div>
-                <b>7,000,000</b>
+                <b id="notstaking">7,000,000</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Estimated DOGEC staking<br>
-                <b>7,000,000</b>
+                <b id="staking">7,000,000</b>
             </h3>
         </div>
 
@@ -71,21 +71,21 @@
         <div>
             <h3>
                 Active stakers<br>
-                <b>1,500</b>
+                <b id="stakers">1,500</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Daily masternodes rewards<br>
-                <b>4.2 DOGEC</b>
+                <b id="masternode-reward">4.2 DOGEC</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Daily staking rewards<br>
-                <b>1.08 DOGEC</b>
+                <b id="staker-reward">1.08 DOGEC</b>
             </h3>
         </div>
 
@@ -106,7 +106,7 @@
         <div>
             <h3>
                 Amount of coins<br>
-                <input type="number" placeholder="1"><br>
+                <input type="number" name="coins" placeholder="1"><br>
                 <input type="radio" id="male" name="allocation" value="stake" checked>
                 <span class="checkmark"></span>
                 <label for="male">Staking</label>
@@ -119,33 +119,44 @@
         <div>
             <h3>
                 Daily rewards<br>
-                <b>1.5 DOGEC</b>
+                <b id="daily-rewards">1.5 DOGEC</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Weekly rewards<br>
-                <b>10.5 DOGEC</b>
+                <b id="weekly-rewards">10.5 DOGEC</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Monthly rewards<br>
-                <b>45 DOGEC</b>
+                <b id="monthly-rewards">45 DOGEC</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Yearly rewards<br>
-                <b>547 DOGEC</b>
+                <b id="yearly-rewards">547 DOGEC</b>
             </h3>
         </div>
     </div>
 </div>
 
 <script src="/scripts/main.js"></script>
+<script>
+    let data = {
+        "supply":14308989,
+        "masternodes":1570,
+        "masternodeCollateral": 5000,
+        "stakeReward":1.08,
+        "masternodeReward":4.32,
+        "nonStakingPercentage":0.1
+    };
+    let init = new RewardsCalculator(data);
+</script>
 </body>
 </html>
