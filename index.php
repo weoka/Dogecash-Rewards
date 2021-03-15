@@ -18,7 +18,7 @@ $handler = start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DogeCash Rewards Calculator</title>
     <meta name="description" content="Compare staking and masternode earnings from Dogecash possible passive incomes.">
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@ $handler = start();
 <body>
 
 <div class="container">
-    <a href="https://dogecash.org/"><img class="logo" src="/images/logo.svg" alt="Dogecash logo"></a>
+    <a href="https://dogecash.org/"><img class="logo" src="images/logo.svg" alt="Dogecash logo"></a>
 </div>
 
 <div class="container">
