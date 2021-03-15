@@ -19,7 +19,7 @@ $handler = start();
     <title>DogeCash Rewards Calculator</title>
     <meta name="description" content="Compare staking and masternode earnings from Dogecash possible passive incomes.">
     <link rel="icon" type="image/png" href="/images/favicon.png">
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -168,7 +168,7 @@ $handler = start();
     <h4><a href="https://github.com/weoka/Dogecash-Rewards" target="_blank">Github Repository</a></h4>
 </div>
 
-<script src="/scripts/main.js"></script>
+<script src="scripts/main.js"></script>
 <script>
     let data = {
         "supply":<?php echo $handler->moneySupply; ?>,
