@@ -1,3 +1,15 @@
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+function start()
+{
+    return new Inc\Handler();
+}
+$handler = start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,31 +36,31 @@
         <div>
             <h3>
                 Circulating DOGEC supply<br>
-                <b>14,000,000</b>
+                <b id="circulatingSupply"></b>
             </h3>
         </div>
 
         <div>
             <h3>
                 DOGEC locked on masternodes<br>
-                <b>14,000,000</b>
+                <b id="lockedOnMasternodes"></b>
             </h3>
         </div>
 
         <div>
             <h3>
-                DOGEC not staking<br>
+                DOGEC not staking (excl. MNs)<br>
                 <div id="slider">
-                    <input min="0" max="99" type="range" value="30" style="background: linear-gradient(to right, #A76D4A 0%, #A76D4A 30%, #D8D8D8 30%, #D8D8D8 100%);"/> <span>30%</span>
+                    <input min="0" max="99" type="range" value="60" style="background: linear-gradient(to right, #A76D4A 60%, #A76D4A 60%, #D8D8D8 60%, #D8D8D8 100%);"/> <span>60%</span>
                 </div>
-                <b id="notstaking">7,000,000</b>
+                <b id="notstaking"></b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Estimated DOGEC staking<br>
-                <b id="staking">7,000,000</b>
+                <b id="staking"></b>
             </h3>
         </div>
 
@@ -64,28 +76,28 @@
         <div>
             <h3>
                 Enabled masternodes<br>
-                <b>1,500</b>
+                <b id="masternodes"></b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Active stakers<br>
-                <b id="stakers">1,500</b>
+                <b id="stakers"></b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Daily masternodes rewards<br>
-                <b id="masternode-reward">4.2 DOGEC</b>
+                <b id="masternode-reward"></b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Daily staking rewards<br>
-                <b id="staker-reward">1.08 DOGEC</b>
+                <b id="staker-reward"></b>
             </h3>
         </div>
 
@@ -119,28 +131,28 @@
         <div>
             <h3>
                 Daily rewards<br>
-                <b id="daily-rewards">1.5 DOGEC</b>
+                <b id="daily-rewards">0 DOGEC</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Weekly rewards<br>
-                <b id="weekly-rewards">10.5 DOGEC</b>
+                <b id="weekly-rewards">0 DOGEC</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Monthly rewards<br>
-                <b id="monthly-rewards">45 DOGEC</b>
+                <b id="monthly-rewards">0 DOGEC</b>
             </h3>
         </div>
 
         <div>
             <h3>
                 Yearly rewards<br>
-                <b id="yearly-rewards">547 DOGEC</b>
+                <b id="yearly-rewards">0 DOGEC</b>
             </h3>
         </div>
     </div>
@@ -149,12 +161,12 @@
 <script src="/scripts/main.js"></script>
 <script>
     let data = {
-        "supply":14308989,
-        "masternodes":1570,
+        "supply":<?php echo $handler->moneySupply; ?>,
+        "masternodes":<?php echo $handler->masternodes; ?>,
         "masternodeCollateral": 5000,
         "stakeReward":1.08,
         "masternodeReward":4.32,
-        "nonStakingPercentage":0.1
+        "nonStakingPercentage":0.6
     };
     let init = new RewardsCalculator(data);
 </script>

@@ -8,6 +8,7 @@ class RewardsCalculator
         this.stakeReward = Number(data.stakeReward);
         this.masternodeReward = Number(data.masternodeReward);
         this.masternodeAllocation = Number(data.masternodeCollateral);
+        this.lockedOnMasternodes = this.masternodes * this.masternodeAllocation;
         this.nonStakingPercentage = Number(data.nonStakingPercentage);
         this.dailyStakingRewards = this.stakeReward * 1440;
         this.dailyMasternodeRewards = this.masternodeReward * 1440;
@@ -15,6 +16,10 @@ class RewardsCalculator
         //HTML elements
         this.range = document.querySelector("#slider input");
         this.rangespan = document.querySelector("#slider span");
+        this.circulatingSupplyfigure = document.querySelector("#circulatingSupply");
+        this.masternodesfigure = document.querySelector("#masternodes");
+        this.lockedOnMasternodesfigure = document.querySelector("#lockedOnMasternodes");
+        this.enabledMasternodes = document.querySelector("#masternodes");
         this.nonstakingfigure = document.querySelector("#notstaking");
         this.stakingfigure = document.querySelector("#staking");
         this.stakersfigure = document.querySelector("#stakers");
@@ -29,10 +34,19 @@ class RewardsCalculator
 
 
         //Update range and all calcs
-        this.update();
+        this.start();
     }
 
-    update() {
+    start() {
+        //fill everything
+        this.updateCalcs();
+        this.range.style.background = 'linear-gradient(to right, #A76D4A 0%, #A76D4A ' + this.nonStakingPercentage*100 + '%, #D8D8D8 ' + this.nonStakingPercentage*100 + '%, #D8D8D8 100%)';
+        this.rangespan.innerHTML=this.nonStakingPercentage*100+'%';
+        this.circulatingSupplyfigure.innerHTML=Number(this.supply.toFixed(0)).toLocaleString();
+        this.lockedOnMasternodesfigure.innerHTML=Number(this.lockedOnMasternodes.toFixed(0)).toLocaleString();
+        this.enabledMasternodes.innerHTML = Number(this.masternodes.toFixed(0)).toLocaleString();
+
+        //set up events
         this.range.oninput = function() {
             var value = (this.range.value - this.range.min) / (this.range.max - this.range.min) * 100;
             this.range.style.background = 'linear-gradient(to right, #A76D4A 0%, #A76D4A ' + value + '%, #D8D8D8 ' + value + '%, #D8D8D8 100%)';
@@ -56,8 +70,8 @@ class RewardsCalculator
     }
 
     updateCalcs() { 
-        this.notStaking = (this.supply- (this.masternodes*this.masternodeAllocation) ) * this.nonStakingPercentage;
-        this.staking = this.supply - (this.notStaking + this.masternodes*this.masternodeAllocation);
+        this.notStaking = (this.supply - this.lockedOnMasternodes ) * this.nonStakingPercentage;
+        this.staking = this.supply - (this.notStaking + this.lockedOnMasternodes);
         this.stakers = this.staking/this.masternodeAllocation;
         this.individualStakerReward = this.dailyStakingRewards/this.stakers;
         this.individualMasternodeReward = this.dailyMasternodeRewards/this.masternodes;
